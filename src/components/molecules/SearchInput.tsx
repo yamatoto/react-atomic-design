@@ -4,7 +4,6 @@ import { PrimaryButton } from '../atoms/buttons/PrimaryButton';
 import { Input } from '../atoms/inputs/Input';
 
 export const SearchInput: React.FC<Record<string, unknown>> = memo(() => {
-  console.log('SearchInput');
   return (
     <SContainer>
       <Input placeholder="検索条件を入力" />

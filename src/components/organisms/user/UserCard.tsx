@@ -15,7 +15,6 @@ type Props = {
 };
 
 export const UserCard: React.FC<Props> = memo(({ user }) => {
-  console.log('UserCard');
   const { name, imageUrl, mail, tel, company, website } = user;
   return (
     <Card>
