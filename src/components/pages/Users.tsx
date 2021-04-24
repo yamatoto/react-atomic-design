@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLocation } from 'react-router';
 import styled from 'styled-components';
 import { SearchInput } from '../molecules/SearchInput';
 import { UserCard } from '../organisms/user/UserCard';
@@ -17,17 +16,13 @@ const MOCK_USERS = Array(10)
   }));
 
 export const Users: React.FC<Record<string, unknown>> = () => {
-  const { state } = useLocation<{ isAdmin: boolean }>();
-  const isAdmin = state ? state.isAdmin : false;
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SearchInput />
       <SUserArea>
         {MOCK_USERS.map((user) => {
-          return (
-            <UserCard key={user.id} user={user} isAdmin={isAdmin}></UserCard>
-          );
+          return <UserCard key={user.id} user={user}></UserCard>;
         })}
       </SUserArea>
     </SContainer>

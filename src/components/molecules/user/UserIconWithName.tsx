@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { UserContext } from '../../../providers/UserProvider';
 
 type Props = {
   name: string;
   imageUrl: string;
-  isAdmin: boolean;
 };
-export const UserIconWithName: React.FC<Props> = ({
-  name,
-  imageUrl,
-  isAdmin,
-}) => {
+export const UserIconWithName: React.FC<Props> = ({ name, imageUrl }) => {
+  const { userInfo } = useContext(UserContext);
+
   return (
     <SContainer>
       <div className="img-wrapper">
         <SImg src={imageUrl} alt={`${name}プロフィール画像`} />
       </div>
       <SName>{name}</SName>
-      {isAdmin ? <SEdit>編集</SEdit> : null}
+      {userInfo?.isAdmin ? <SEdit>編集</SEdit> : null}
     </SContainer>
   );
 };
