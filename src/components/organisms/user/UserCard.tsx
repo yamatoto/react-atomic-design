@@ -12,13 +12,17 @@ type Props = {
     company?: { name: string };
     website?: string;
   };
+  isAdmin: boolean;
 };
 
-export const UserCard: React.FC<Props> = ({ user }) => {
+export const UserCard: React.FC<Props> = ({ user, isAdmin }) => {
   const { name, imageUrl, mail, tel, company, website } = user;
   return (
     <Card>
-      <UserIconWithName name={name} imageUrl={imageUrl}></UserIconWithName>
+      <UserIconWithName
+        name={name}
+        imageUrl={imageUrl}
+        isAdmin={isAdmin}></UserIconWithName>
       <SDL>
         <div>
           <dt>メール</dt>
