@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { SearchInput } from './components/molecules/SearchInput';
 import { UserCard } from './components/organisms/user/UserCard';
+import { DefaultLayout } from './components/templates/DefaultLayout';
 
 const MOCK_USERS = [
   {
@@ -26,11 +28,13 @@ const MOCK_USERS = [
 
 export const App: React.FC<Record<string, unknown>> = () => {
   return (
-    <div className="App">
-      <SearchInput />
-      {MOCK_USERS.map((user) => {
-        return <UserCard key={user.id} user={user}></UserCard>;
-      })}
-    </div>
+    <BrowserRouter>
+      <DefaultLayout>
+        <SearchInput />
+        {MOCK_USERS.map((user) => {
+          return <UserCard key={user.id} user={user}></UserCard>;
+        })}
+      </DefaultLayout>
+    </BrowserRouter>
   );
 };

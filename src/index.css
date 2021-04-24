@@ -14,5 +14,5 @@ code {
 
 body {
   background-color: #e4f9f5;
-  padding: 12px;
+  min-height: 100vh;
 }
