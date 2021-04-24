@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { SearchInput } from '../molecules/SearchInput';
 import { UserCard } from '../organisms/user/UserCard';
+import { SecondaryButton } from '../atoms/buttons/SecondaryButton';
+import { UserContext } from '../../providers/UserProvider';
 
 const MOCK_USERS = Array(10)
   .fill(null)
@@ -16,10 +18,17 @@ const MOCK_USERS = Array(10)
   }));
 
 export const Users: React.FC<Record<string, unknown>> = () => {
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  const clickSwitchHandler = () => {
+    setUserInfo({ isAdmin: !userInfo.isAdmin });
+  };
+
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SearchInput />
+      <br />
+      <SecondaryButton click={clickSwitchHandler}>切り替え</SecondaryButton>
       <SUserArea>
         {MOCK_USERS.map((user) => {
           return <UserCard key={user.id} user={user}></UserCard>;

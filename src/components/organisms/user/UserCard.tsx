@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Card } from '../../atoms/cards/Card';
 import { UserIconWithName } from '../../molecules/user/UserIconWithName';
@@ -14,7 +14,8 @@ type Props = {
   };
 };
 
-export const UserCard: React.FC<Props> = ({ user }) => {
+export const UserCard: React.FC<Props> = memo(({ user }) => {
+  console.log('UserCard');
   const { name, imageUrl, mail, tel, company, website } = user;
   return (
     <Card>
@@ -39,7 +40,9 @@ export const UserCard: React.FC<Props> = ({ user }) => {
       </SDL>
     </Card>
   );
-};
+});
+
+UserCard.displayName = 'UserCard';
 
 const SDL = styled.dl`
   div {

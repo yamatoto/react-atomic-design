@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import styled from 'styled-components';
 import { UserContext } from '../../../providers/UserProvider';
 
@@ -6,7 +6,8 @@ type Props = {
   name: string;
   imageUrl: string;
 };
-export const UserIconWithName: React.FC<Props> = ({ name, imageUrl }) => {
+export const UserIconWithName: React.FC<Props> = memo(({ name, imageUrl }) => {
+  console.log('UserIconWithName');
   const { userInfo } = useContext(UserContext);
 
   return (
@@ -18,7 +19,9 @@ export const UserIconWithName: React.FC<Props> = ({ name, imageUrl }) => {
       {userInfo?.isAdmin ? <SEdit>編集</SEdit> : null}
     </SContainer>
   );
-};
+});
+
+UserIconWithName.displayName = 'UserIconWithName';
 
 const SContainer = styled.div`
   text-align: center;

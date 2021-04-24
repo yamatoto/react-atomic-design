@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { PrimaryButton } from '../atoms/buttons/PrimaryButton';
 import { Input } from '../atoms/inputs/Input';
 
-export const SearchInput: React.FC<Record<string, unknown>> = () => {
+export const SearchInput: React.FC<Record<string, unknown>> = memo(() => {
+  console.log('SearchInput');
   return (
     <SContainer>
       <Input placeholder="検索条件を入力" />
@@ -12,7 +13,7 @@ export const SearchInput: React.FC<Record<string, unknown>> = () => {
       </SButtonWrapper>
     </SContainer>
   );
-};
+});
 
 const SContainer = styled.div`
   display: flex;
@@ -22,3 +23,5 @@ const SContainer = styled.div`
 const SButtonWrapper = styled.div`
   padding-left: 8px;
 `;
+
+SearchInput.displayName = 'SearchInput';
