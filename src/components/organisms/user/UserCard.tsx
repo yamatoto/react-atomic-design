@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import { UserType } from '../../../types/User';
+import { UserType } from '../../../types/user';
 import { Card } from '../../atoms/cards/Card';
 import { UserIconWithName } from '../../molecules/user/UserIconWithName';
 

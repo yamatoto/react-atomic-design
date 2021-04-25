@@ -1,31 +1,21 @@
-import React, { useContext, useState } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { SearchInput } from '../molecules/SearchInput';
 import { UserCard } from '../organisms/user/UserCard';
 import { SecondaryButton } from '../atoms/buttons/SecondaryButton';
 import { UserContext } from '../../providers/UserProvider';
-import { UserType } from '../../types/User';
+import { useFetchUsers } from '../hooks/useFetchUsers';
 
 export const Users: React.VFC<Record<string, unknown>> = () => {
+  const { fetchUsers, users, setId, id, loading, error } = useFetchUsers();
   const { userInfo, setUserInfo } = useContext(UserContext);
-  const [id, setId] = useState('');
-  const [users, setUsers] = useState<UserType[]>([]);
 
   const clickSwitchHandler = () => setUserInfo({ isAdmin: !userInfo.isAdmin });
 
-  const clickSearchHandler = () => {
-    const queryParam = id === '' ? '' : `?id=${id}`;
-    axios
-      .get<UserType[]>(
-        `https://jsonplaceholder.typicode.com/users${queryParam}`
-      )
-      .then(({ data }) => setUsers(data))
-      .catch((err) => alert(err));
-  };
-
   const changeInputHandler = (event: React.ChangeEvent<HTMLInputElement>) =>
     setId(event.target.value);
+
+  const clickSearchHandler = () => fetchUsers();
 
   return (
     <SContainer>
@@ -35,13 +25,24 @@ export const Users: React.VFC<Record<string, unknown>> = () => {
         inputValue={id}
         changeInput={(event) => changeInputHandler(event)}
       />
-      <br />
       <SecondaryButton click={clickSwitchHandler}>切り替え</SecondaryButton>
-      <SUserArea>
-        {users.map((user) => (
-          <UserCard key={user.id} user={user}></UserCard>
-        ))}
-      </SUserArea>
+      {error ? (
+        <>
+          <p style={{ color: 'red' }}>データの取得に失敗しました</p>
+          <br />
+        </>
+      ) : null}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <SUserArea>
+            {users.map((user) => (
+              <UserCard key={user.id} user={user}></UserCard>
+            ))}
+          </SUserArea>
+        </>
+      )}
     </SContainer>
   );
 };
