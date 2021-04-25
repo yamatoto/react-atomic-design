@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Footer: React.FC<Record<string, unknown>> = () => {
+export const Footer: React.VFC<Record<string, unknown>> = () => {
   return <SFooter>&copy; 2021 test Inc.</SFooter>;
 };
 

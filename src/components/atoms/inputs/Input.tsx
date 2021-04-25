@@ -7,7 +7,7 @@ type Props = {
   changeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Input: React.FC<Props> = ({
+export const Input: React.VFC<Props> = ({
   placeholder = '',
   changeInput,
   value = '',

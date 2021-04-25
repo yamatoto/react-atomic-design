@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Card: React.FC<Record<string, unknown>> = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const Card: React.VFC<Props> = ({ children }) => {
   return <SCard>{children}</SCard>;
 };
 

@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { BaseButton } from './BaseButton';
 
 type Props = {
+  children: React.ReactNode;
   click: () => void;
 };
-export const SecondaryButton: React.FC<Props> = ({ children, click }) => {
+export const SecondaryButton: React.VFC<Props> = ({ children, click }) => {
   return <SButton onClick={click}>{children}</SButton>;
 };
 

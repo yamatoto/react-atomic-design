@@ -6,7 +6,7 @@ type Props = {
   name: string;
   imageUrl?: string;
 };
-export const UserIconWithName: React.FC<Props> = memo(
+export const UserIconWithName: React.VFC<Props> = memo(
   ({ name, imageUrl = 'images/anton-kraev-TuU5tODcrzU-unsplash.jpg' }) => {
     const { userInfo } = useContext(UserContext);
 

@@ -7,7 +7,7 @@ import { SecondaryButton } from '../atoms/buttons/SecondaryButton';
 import { UserContext } from '../../providers/UserProvider';
 import { UserType } from '../../types/User';
 
-export const Users: React.FC<Record<string, unknown>> = () => {
+export const Users: React.VFC<Record<string, unknown>> = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const [id, setId] = useState('');
   const [users, setUsers] = useState<UserType[]>([]);

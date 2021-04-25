@@ -8,7 +8,7 @@ type Props = {
   inputValue: string;
   clickSearch: () => void;
 };
-export const SearchInput: React.FC<Props> = memo(
+export const SearchInput: React.VFC<Props> = memo(
   ({ clickSearch, changeInput, inputValue }) => {
     return (
       <SContainer>

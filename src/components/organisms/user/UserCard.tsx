@@ -8,7 +8,7 @@ type Props = {
   user: Omit<UserType, 'id' | 'address'>;
 };
 
-export const UserCard: React.FC<Props> = memo(({ user }) => {
+export const UserCard: React.VFC<Props> = memo(({ user }) => {
   const { name, imageUrl, email, phone, company, website } = user;
   return (
     <Card>

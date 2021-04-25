@@ -1,7 +1,11 @@
 import React from 'react';
 import { Header } from '../atoms/layouts/Header';
 
-export const HeaderOnly: React.FC<Record<string, unknown>> = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const HeaderOnly: React.VFC<Props> = ({ children }) => {
   return (
     <>
       <Header />

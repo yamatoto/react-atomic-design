@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Header: React.FC<Record<string, unknown>> = ({ children }) => {
+export const Header: React.VFC<Record<string, unknown>> = () => {
   return (
     <SHeader>
       <SLink to="/">HOME</SLink>

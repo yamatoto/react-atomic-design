@@ -5,7 +5,7 @@ import { Users } from '../components/pages/Users';
 import { DefaultLayout } from '../components/templates/DefaultLayout';
 import { HeaderOnly } from '../components/templates/HeaderOnly';
 
-export const Router: React.FC<Record<string, unknown>> = () => {
+export const Router: React.VFC<Record<string, unknown>> = () => {
   return (
     <BrowserRouter>
       <Switch>

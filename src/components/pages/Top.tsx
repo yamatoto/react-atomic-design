@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { UserContext } from '../../providers/UserProvider';
 import { SecondaryButton } from '../atoms/buttons/SecondaryButton';
 
-export const Top: React.FC<Record<string, unknown>> = () => {
+export const Top: React.VFC<Record<string, unknown>> = () => {
   const history = useHistory();
 
   const { setUserInfo } = useContext(UserContext);

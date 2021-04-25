@@ -11,9 +11,11 @@ export const UserContext = createContext(
   }
 );
 
-export const UserProvider: React.FC<Record<string, unknown>> = ({
-  children,
-}) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const UserProvider: React.VFC<Props> = ({ children }) => {
   const [userInfo, setUserInfo] = useState({ isAdmin: false });
   return (
     <UserContext.Provider value={{ userInfo, setUserInfo }}>
