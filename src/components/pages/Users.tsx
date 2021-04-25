@@ -38,9 +38,9 @@ export const Users: React.FC<Record<string, unknown>> = () => {
       <br />
       <SecondaryButton click={clickSwitchHandler}>切り替え</SecondaryButton>
       <SUserArea>
-        {users.map((user) => {
-          return <UserCard key={user.id} user={user}></UserCard>;
-        })}
+        {users.map((user) => (
+          <UserCard key={user.id} user={user}></UserCard>
+        ))}
       </SUserArea>
     </SContainer>
   );

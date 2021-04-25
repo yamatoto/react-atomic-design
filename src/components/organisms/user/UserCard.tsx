@@ -5,7 +5,7 @@ import { Card } from '../../atoms/cards/Card';
 import { UserIconWithName } from '../../molecules/user/UserIconWithName';
 
 type Props = {
-  user: UserType;
+  user: Omit<UserType, 'id' | 'address'>;
 };
 
 export const UserCard: React.FC<Props> = memo(({ user }) => {
