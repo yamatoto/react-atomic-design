@@ -4,21 +4,23 @@ import { UserContext } from '../../../providers/UserProvider';
 
 type Props = {
   name: string;
-  imageUrl: string;
+  imageUrl?: string;
 };
-export const UserIconWithName: React.FC<Props> = memo(({ name, imageUrl }) => {
-  const { userInfo } = useContext(UserContext);
+export const UserIconWithName: React.FC<Props> = memo(
+  ({ name, imageUrl = 'images/anton-kraev-TuU5tODcrzU-unsplash.jpg' }) => {
+    const { userInfo } = useContext(UserContext);
 
-  return (
-    <SContainer>
-      <div className="img-wrapper">
-        <SImg src={imageUrl} alt={`${name}プロフィール画像`} />
-      </div>
-      <SName>{name}</SName>
-      {userInfo?.isAdmin ? <SEdit>編集</SEdit> : null}
-    </SContainer>
-  );
-});
+    return (
+      <SContainer>
+        <div className="img-wrapper">
+          <SImg src={imageUrl} alt={`${name}プロフィール画像`} />
+        </div>
+        <SName>{name}</SName>
+        {userInfo?.isAdmin ? <SEdit>編集</SEdit> : null}
+      </SContainer>
+    );
+  }
+);
 
 UserIconWithName.displayName = 'UserIconWithName';
 

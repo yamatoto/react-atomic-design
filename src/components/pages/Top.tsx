@@ -6,6 +6,7 @@ import { SecondaryButton } from '../atoms/buttons/SecondaryButton';
 
 export const Top: React.FC<Record<string, unknown>> = () => {
   const history = useHistory();
+
   const { setUserInfo } = useContext(UserContext);
 
   const clickAdminHandler = () => {

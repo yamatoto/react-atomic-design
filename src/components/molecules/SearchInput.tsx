@@ -3,16 +3,27 @@ import styled from 'styled-components';
 import { PrimaryButton } from '../atoms/buttons/PrimaryButton';
 import { Input } from '../atoms/inputs/Input';
 
-export const SearchInput: React.FC<Record<string, unknown>> = memo(() => {
-  return (
-    <SContainer>
-      <Input placeholder="検索条件を入力" />
-      <SButtonWrapper>
-        <PrimaryButton>検索</PrimaryButton>
-      </SButtonWrapper>
-    </SContainer>
-  );
-});
+type Props = {
+  changeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  inputValue: string;
+  clickSearch: () => void;
+};
+export const SearchInput: React.FC<Props> = memo(
+  ({ clickSearch, changeInput, inputValue }) => {
+    return (
+      <SContainer>
+        <Input
+          placeholder="検索条件を入力"
+          value={inputValue}
+          changeInput={(event) => changeInput(event)}
+        />
+        <SButtonWrapper>
+          <PrimaryButton onClick={clickSearch}>検索</PrimaryButton>
+        </SButtonWrapper>
+      </SContainer>
+    );
+  }
+);
 
 const SContainer = styled.div`
   display: flex;

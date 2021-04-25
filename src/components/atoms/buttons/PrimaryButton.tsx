@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { BaseButton } from './BaseButton';
 
-export const PrimaryButton: React.FC<Record<string, unknown>> = ({
-  children,
-}) => {
-  return <SButton>{children}</SButton>;
+type Props = {
+  onClick: () => void;
+};
+
+export const PrimaryButton: React.FC<Props> = ({ children, onClick }) => {
+  return <SButton onClick={onClick}>{children}</SButton>;
 };
 
 const SButton = styled(BaseButton)`

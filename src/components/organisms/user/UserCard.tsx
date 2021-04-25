@@ -1,36 +1,30 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
+import { UserType } from '../../../types/User';
 import { Card } from '../../atoms/cards/Card';
 import { UserIconWithName } from '../../molecules/user/UserIconWithName';
 
 type Props = {
-  user: {
-    name: string;
-    imageUrl: string;
-    mail?: string;
-    tel?: string;
-    company?: { name: string };
-    website?: string;
-  };
+  user: UserType;
 };
 
 export const UserCard: React.FC<Props> = memo(({ user }) => {
-  const { name, imageUrl, mail, tel, company, website } = user;
+  const { name, imageUrl, email, phone, company, website } = user;
   return (
     <Card>
       <UserIconWithName name={name} imageUrl={imageUrl}></UserIconWithName>
       <SDL>
         <div>
           <dt>メール</dt>
-          <dd>{mail}</dd>
+          <dd>{email}</dd>
         </div>
         <div>
           <dt>TEL</dt>
-          <dd>{tel}</dd>
+          <dd>{phone}</dd>
         </div>
         <div>
           <dt>会社名</dt>
-          <dd>{company?.name}</dd>
+          <dd>{company.name}</dd>
         </div>
         <div>
           <dt>WEB</dt>
@@ -50,7 +44,7 @@ const SDL = styled.dl`
     align-items: center;
     padding-bottom: 4px;
     dt {
-      width: 50px;
+      min-width: 50px;
     }
     dd {
       margin-left: 15px;

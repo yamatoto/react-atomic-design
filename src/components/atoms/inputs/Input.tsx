@@ -3,10 +3,23 @@ import styled from 'styled-components';
 
 type Props = {
   placeholder: string;
+  value: string;
+  changeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Input: React.FC<Props> = ({ placeholder = '' }) => {
-  return <SInput type="text" placeholder={placeholder} />;
+export const Input: React.FC<Props> = ({
+  placeholder = '',
+  changeInput,
+  value = '',
+}) => {
+  return (
+    <SInput
+      type="text"
+      placeholder={placeholder}
+      value={value}
+      onChange={(event) => changeInput(event)}
+    />
+  );
 };
 
 const SInput = styled.input`
